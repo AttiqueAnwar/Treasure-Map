@@ -1,32 +1,159 @@
-# Prerequisites
-*.d
+#include<iostream>
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+using namespace std;
 
-# Precompiled Headers
-*.gch
-*.pch
+main()
+{
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+int n,row,coloumn,i,j,add,count=0,count1=0;
 
-# Fortran module files
-*.mod
-*.smod
+do{
+	if(count>0)
+	 cout<<"ERROR"<<endl;
+	 count++;
+	cout<<"Enter a map size between 5 and 9: ";
+	cin>>n;
+} while (!(n>=5 && n<=9));
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
+do {
+	if(count1>0)
+	cout<<"ERROR"<<endl;
+	count1++;
+	cout<<"Initial location of X (row-coloumn): ";
+	cin>>row>>coloumn;
+	
+} while(row>n && coloumn>n);
 
-# Executables
-*.exe
-*.out
-*.app
+for(i=0;i<n;i++){
+	
+	cout<<i;
+	for(j=0;j<n;j++){
+	 if(i==row && j==coloumn)
+	 cout<<"X";
+	 else
+	 cout<<"-";
+	
+	}
+	cout<<endl;
+}
+
+	int Y;
+do {
+	
+	cout<<endl;
+	cout<<"1) Update treasure coordinates (row-coloumn)"<<endl;
+	cout<<"2) Shift X left or right. "<<endl;
+	cout<<"3) Shift X up or down. "<<endl;
+	cout<<"4) Exit program."<<endl;
+	cout<<endl;
+	cout<<"Enter option ";
+	cin>>Y;
+	
+	switch (Y){
+	 int coloumn,row;
+		
+	case 1:{
+		
+	 int count=0;
+	
+	do{
+		
+	 if(count>0)
+	 cout<<"ERROR"<<endl;
+	 count++;
+	 cout<<"Initial location of X (row-coloumn): ";
+	 cin>>row>>coloumn;
+	
+} while(row>n && coloumn>n);
+
+for(i=0;i<n;i++){
+	cout<<i;
+ for(j=0;j<n;j++){
+   if(i==row && j==coloumn)
+   cout<<"X";
+   else
+   cout<<"-";
+
+	}
+	cout<<endl;
+}
+	break;
+	
+	}
+		
+	case 2:{
+	 int count=0;
+	do{
+	
+	if(count>0)
+	cout<<"ERROR"<<endl;
+	count++;
+	cout<<"Shift X left or right: ";
+	cin>>add;
+	} while (coloumn+add>=n || coloumn+add<0);
+	
+	if(add<0){	
+	 coloumn+=add;
+	 }
+	 if(add>0){
+	  coloumn+=add;
+	 }
+	for(i=0;i<n;i++){
+		cout<<i;
+	 for(j=0;j<n;j++){
+		
+		if(row==i && coloumn==j)
+		cout<<"X";
+		else
+		cout<<"-";
+	}
+	cout<<endl;
+}
+    break;
+	
+	}
+		
+	case 3:{
+	 int count=0;
+	
+	do{
+		
+	if(count>0)
+	cout<<"ERROR"<<endl;
+	count++;
+	cout<<"Shift X up or down: ";
+	cin>>add;
+	
+	} while (row+add>=n || row+add<0);
+	
+	if(row>0){
+	row+=add;
+	}
+	if(row<0){
+	row+=add;
+	}
+	for(i=0;i<n;i++){
+		cout<<i;
+	 for(j=0;j<n;j++){
+		
+		if(row==i && coloumn==j)
+		cout<<"X";
+		else
+		cout<<"-";
+	}
+	
+	cout<<endl;
+}
+    break;
+	}
+	
+	case 4:
+	
+	cout<<"Exiting Program";
+	
+	}
+	
+} while (!(Y==4));
+
+
+}
